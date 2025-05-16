@@ -1,14 +1,140 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR" ng-app="blog">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Blog - Consumo API</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="assets/js/app.js"></script>
   </head>
   <body>
-    
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div>
+          <a href="page.html" class=" btn-preto btn btn-outline-secondary">Assinar</a>
+        </div>
+        <div class="text-center flex-grow-1">
+          <img src="./assets/images/Ghost.png" class="img-fluid"
+            style="max-width: 150px; width: 100%;">
+        </div>
+        <div>
+          <button class="navbar-toggler" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1"
+            id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">MENU</h5>
+              <button type="button" class="btn-close"
+                data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page"
+                    href="#">Início</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contatos">Contato</a>
+                </li>
+              </ul>
+              <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="search"
+                  placeholder="Digite aqui..." aria-label="Search" />
+                <button class="btn-preto btn btn-outline-secondary"
+                  type="submit">Pesquisar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="bigCard">
+      <div class="container">
+        <div class="card mb-3 myCard">
+          <div class="row g-0">
+            <div class="col-md-6">
+              <img src="./assets/images/gasparzinho.jpeg"
+                class="img-fluid w-100" alt="Gasparzinho">
+            </div>
+            <div class="col-md-6 teste">
+              <div class="card-body">
+                <h5 class="card-title destaque">Em destaque</h5>
+                <p class="card-text"><small class="text-body-primary">final da
+                    década de 1930 - Joe Oriolo, Seymour Reit</small></p>
+                <p class="card-text classic">Um clássico dos desenhos
+                  maneiros.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contents" ng-controller="Rest">
+      <div class="container" >
+        <p class="normalText"> Mais Recentes </p>
+        <div class="row row-cols-1 row-cols-md-3 g-4 text-center" >
+          <div class="col" ng-repeat="publicacao in publicacoes track by $index">
+            <div class="myCard card h-100" >
+              <img ng-src="{{ publicacao.thumbImage }}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-title"> {{ publicacao.title }} </p>
+                <small class="card-text"> {{ publicacao.description }} </small>
+              </div>
+              <div class="card-footer">
+                <div class="row centraliza">
+                  <div class="col">
+                    <a href="detalhe.html?index={{$index}}" class="btn btn-outline-secondary branco">Saiba mais</a>
+                  </div>
+                  <div class="col">
+                    <small class="text-light"> {{ publicacao.postDate }} </small>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div> 
+          </div>
+      </div>
+    </section>
+
+    <section id="contatos" class=" footer container">
+      <div class="card text-center">
+        <div class="card-header blackWhite">
+          Contatos
+        </div>
+        <div class="card-body">
+          <p class="contatos card-text">Valentina Gaspar Magri -> valentina113457@gmail.com</p>
+          <p class="contatos card-text">Nome Completo -> nomecompleto@gmail.com</p>
+          <p class="contatos card-text">Outro Nome Completo -> outronomecompleto@gmail.com</p>
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="bottomBox" id="bottomDropdown">
+      <div class=" footer container-fluid text-center">
+          <div class="row">
+            <div class="col">
+              <p>Política de Cookies Política de Privacidade <br> © 2025 - Criado por Val Gaspar </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"></script>
   </body>
 </html>

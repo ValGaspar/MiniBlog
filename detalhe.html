@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="blog">
+    <head>
+        <meta charset="UTF-8">
+        <title>Detalhe da Postagem</title>
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        <script src="assets/js/app.js"></script>
+    </head>
+    <body ng-controller="Detalhe">
+        <section class="contents">
+            <div class="container">
+                <h2>{{ publicacao.title }}</h2>
+                <img ng-src="{{ publicacao.thumbImage }}"
+                    alt="Imagem da publicação" class="img-fluid mb-3">
+                <p>{{ publicacao.content || publicacao.description }}</p>
+                <a href="#!/" class="btn btn-secondary mt-3">Voltar</a>
+            </div>
+        </section>
+
+    </body>
+</html>
